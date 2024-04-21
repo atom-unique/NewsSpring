@@ -1,10 +1,9 @@
 package ru.kravchenko.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ru.kravchenko.model.Comment;
 
-import java.util.List;
-
-public interface CommentRepository extends CommonRepository<Comment> {
-
-    List<Comment> findAll(Long newsId);
+@Repository
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 }

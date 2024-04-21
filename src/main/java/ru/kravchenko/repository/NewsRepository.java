@@ -1,10 +1,9 @@
 package ru.kravchenko.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ru.kravchenko.model.News;
 
-import java.util.List;
-
-public interface NewsRepository extends CommonRepository<News> {
-
-    List<News> findAll();
+@Repository
+public interface NewsRepository extends JpaRepository<News, Long> {
 }

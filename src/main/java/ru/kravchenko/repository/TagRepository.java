@@ -1,12 +1,9 @@
 package ru.kravchenko.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ru.kravchenko.model.Tag;
 
-public interface TagRepository {
-
-    Tag findOne(Long id);
-
-    void create(Tag tag);
-
-    void remove(Long id);
+@Repository
+public interface TagRepository extends JpaRepository<Tag, Long> {
 }

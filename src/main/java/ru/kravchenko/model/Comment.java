@@ -4,8 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
 
@@ -15,8 +15,6 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long newsId;
 
     private String author;
 
@@ -36,14 +34,6 @@ public class Comment {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getNewsId() {
-        return newsId;
-    }
-
-    public void setNewsId(Long newsId) {
-        this.newsId = newsId;
     }
 
     public String getAuthor() {

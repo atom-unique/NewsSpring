@@ -1,47 +1,50 @@
 package ru.kravchenko.service.impl;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kravchenko.model.News;
 import ru.kravchenko.repository.NewsRepository;
-import ru.kravchenko.repository.impl.NewsRepositoryImpl;
 import ru.kravchenko.service.NewsService;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
 
     @Autowired
-    public NewsServiceImpl(SessionFactory sessionFactory) {
-        this.newsRepository = new NewsRepositoryImpl(sessionFactory);
+    public NewsServiceImpl(NewsRepository newsRepository) {
+        this.newsRepository = newsRepository;
     }
 
     @Override
     public News findById(Long id) {
-        return newsRepository.findOne(id);
+        return newsRepository.findById(id).orElseThrow();
     }
 
     @Override
     public List<News> findAllNews() {
-        List<News> newsList = newsRepository.findAll();
-        return newsList.isEmpty() ? List.of() : newsList;
+        return newsRepository.findAll();
     }
 
+    @Transactional
     @Override
     public void saveNews(News news) {
-        if (newsRepository.findOne(news.getId()) != null && news.getId() != null) {
-            newsRepository.update(news);
-        } else {
-            newsRepository.create(news);
-        }
+        newsRepository.save(news);
+    }
+
+    @Transactional
+    @Override
+    public void removeNews(Long id) {
+        newsRepository.deleteById(id);
     }
 
     @Override
-    public void removeNews(Long id) {
-        newsRepository.remove(id);
+    public void updateNews(Long id, News news) {
+        news.setId(id);
+        newsRepository.save(news);
     }
 }

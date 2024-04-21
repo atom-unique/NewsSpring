@@ -30,7 +30,7 @@ public class News {
     private String text;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "comment_id")
+    @JoinColumn(name = "news_id")
     private List<Comment> commentList;
 
     @ManyToMany

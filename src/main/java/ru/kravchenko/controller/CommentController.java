@@ -22,12 +22,12 @@ public class CommentController {
     }
 
     @GetMapping("/all")
-    public List<Comment> getAllComments(@RequestParam Long newsId) {
+    public List<Comment> getAllComments(@RequestParam(name = "news_id") Long newsId) {
         return commentService.findAllComment(newsId);
     }
 
-    @GetMapping( "/comment")
-    public Comment getComment(@RequestParam Long id) {
+    @GetMapping("/comment")
+    public Comment getComment(@RequestParam(name = "id") Long id) {
         return commentService.findById(id);
     }
 }

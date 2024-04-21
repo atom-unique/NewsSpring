@@ -1,5 +1,6 @@
 package ru.kravchenko.service;
 
+import ru.kravchenko.controller.CommentController;
 import ru.kravchenko.model.Comment;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface CommentService {
     void saveComment(Comment comment);
 
     void removeComment(Long id);
+
+    void updateComment(Long id, Comment comment);
 }
