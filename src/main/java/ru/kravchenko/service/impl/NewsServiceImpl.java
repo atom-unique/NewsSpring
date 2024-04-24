@@ -43,6 +43,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    @Transactional
     public void updateNews(Long id, News news) {
         news.setId(id);
         newsRepository.save(news);
