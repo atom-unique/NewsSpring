@@ -1,6 +1,5 @@
 package ru.kravchenko.service;
 
-import ru.kravchenko.controller.CommentController;
 import ru.kravchenko.model.Comment;
 
 import java.util.List;
