@@ -42,9 +42,7 @@ public class NewsController {
     @PostMapping("/news/update")
     public void updateNews(@RequestParam(name = "id") Long id,
                            @RequestBody News news) {
-        News newsToUpdate = newsService.findById(id);
-        news.setId(newsToUpdate.getId());
-        newsService.saveNews(news);
+        newsService.updateNews(id, news);
     }
 
     @DeleteMapping("/news")

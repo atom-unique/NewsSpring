@@ -42,9 +42,7 @@ public class CommentController {
     @PostMapping("/comment/update")
     public void updateComment(@RequestParam(name = "id") Long id,
                               @RequestBody Comment comment) {
-        Comment commentToUpdate = commentService.findById(id);
-        comment.setId(commentToUpdate.getId());
-        commentService.saveComment(comment);
+        commentService.updateComment(id, comment);
     }
 
     @DeleteMapping("/comment")
