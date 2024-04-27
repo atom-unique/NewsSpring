@@ -1,4 +1,14 @@
-News app
+## NEWS
 
-open api
-http://localhost:9090/swagger-ui/index.html#/
+News management web application
+
+### Технологический стек
+
+- Spring Web
+- Spring data Jpa
+- Mapstruct
+- Hibernate
+
+### Правила сборки
+
+mvn clean compile package
