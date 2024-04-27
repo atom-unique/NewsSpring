@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.kravchenko.model.Comment;
 import ru.kravchenko.service.CommentService;
+import ru.kravchenko.service.dto.CommentDto;
 
 import java.util.List;
 
@@ -25,24 +25,24 @@ public class CommentController {
     }
 
     @GetMapping
-    public List<Comment> getAllComments(@RequestParam(name = "news_id") Long newsId) {
+    public List<CommentDto> getAllComments(@RequestParam(name = "news_id") Long newsId) {
         return commentService.findAllComment(newsId);
     }
 
     @GetMapping("/comment")
-    public Comment getComment(@RequestParam(name = "id") Long id) {
+    public CommentDto getComment(@RequestParam(name = "id") Long id) {
         return commentService.findById(id);
     }
 
     @PostMapping("/comment")
-    public void saveComment(@RequestBody Comment comment) {
-        commentService.saveComment(comment);
+    public void saveComment(@RequestBody CommentDto commentDto) {
+        commentService.saveComment(commentDto);
     }
 
     @PostMapping("/comment/update")
     public void updateComment(@RequestParam(name = "id") Long id,
-                              @RequestBody Comment comment) {
-        commentService.updateComment(id, comment);
+                              @RequestBody CommentDto commentDto) {
+        commentService.updateComment(id, commentDto);
     }
 
     @DeleteMapping("/comment")

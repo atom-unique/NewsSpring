@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.kravchenko.model.Tag;
 import ru.kravchenko.service.TagService;
+import ru.kravchenko.service.dto.TagDto;
 
 @RestController
 @RequestMapping("api/news/tags/tag")
@@ -23,13 +23,13 @@ public class TagController {
     }
 
     @GetMapping
-    public Tag getTag(@RequestParam(name = "id") Long id) {
+    public TagDto getTag(@RequestParam(name = "id") Long id) {
         return tagService.findById(id);
     }
 
     @PostMapping
-    public void saveTag(@RequestBody Tag tag) {
-        tagService.saveTag(tag);
+    public void saveTag(@RequestBody TagDto tagDto) {
+        tagService.saveTag(tagDto);
     }
 
     @DeleteMapping

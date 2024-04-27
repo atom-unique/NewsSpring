@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.kravchenko.model.News;
 import ru.kravchenko.service.NewsService;
+import ru.kravchenko.service.dto.NewsDto;
 
 import java.util.List;
 
@@ -25,24 +25,24 @@ public class NewsController {
     }
 
     @GetMapping
-    public List<News> getAllNews() {
+    public List<NewsDto> getAllNews() {
         return newsService.findAllNews();
     }
 
     @GetMapping("/news")
-    public News getNews(@RequestParam(name = "id") Long id) {
+    public NewsDto getNews(@RequestParam(name = "id") Long id) {
         return newsService.findById(id);
     }
 
     @PostMapping("/news")
-    public void saveNews(@RequestBody News news) {
-        newsService.saveNews(news);
+    public void saveNews(@RequestBody NewsDto newsDto) {
+        newsService.saveNews(newsDto);
     }
 
     @PostMapping("/news/update")
     public void updateNews(@RequestParam(name = "id") Long id,
-                           @RequestBody News news) {
-        newsService.updateNews(id, news);
+                           @RequestBody NewsDto newsDto) {
+        newsService.updateNews(id, newsDto);
     }
 
     @DeleteMapping("/news")
