@@ -40,7 +40,6 @@ public class News {
             inverseJoinColumns = @JoinColumn(name = "tad_id"))
     private List<Tag> tagList;
 
-
     public News() {
         this.commentList = new ArrayList<>();
         this.tagList = new ArrayList<>();
