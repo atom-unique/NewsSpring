@@ -1,12 +1,12 @@
 package ru.kravchenko.service;
 
-import ru.kravchenko.model.Tag;
+import ru.kravchenko.service.dto.TagDto;
 
 public interface TagService {
 
-    Tag findById(Long id);
+    TagDto findById(Long id);
 
-    void saveTag(Tag tag);
+    void saveTag(TagDto tag);
 
     void removeTag(Long id);
 }

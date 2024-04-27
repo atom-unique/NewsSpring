@@ -1,18 +1,18 @@
 package ru.kravchenko.service;
 
-import ru.kravchenko.model.Comment;
+import ru.kravchenko.service.dto.CommentDto;
 
 import java.util.List;
 
 public interface CommentService {
 
-    Comment findById(Long id);
+    CommentDto findById(Long id);
 
-    List<Comment> findAllComment(Long newsId);
+    List<CommentDto> findAllComment(Long newsId);
 
-    void saveComment(Comment comment);
+    void saveComment(CommentDto commentDto);
 
     void removeComment(Long id);
 
-    void updateComment(Long id, Comment comment);
+    void updateComment(Long id, CommentDto commentDto);
 }
