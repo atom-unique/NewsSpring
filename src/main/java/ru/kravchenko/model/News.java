@@ -1,5 +1,6 @@
 package ru.kravchenko.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,6 +39,7 @@ public class News {
     @JoinTable(name = "news_tag",
             joinColumns = @JoinColumn(name = "news_id"),
             inverseJoinColumns = @JoinColumn(name = "tad_id"))
+    @JsonIgnoreProperties("newsList")
     private List<Tag> tagList;
 
     public News() {

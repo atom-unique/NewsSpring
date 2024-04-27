@@ -1,5 +1,6 @@
 package ru.kravchenko.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ public class Tag {
     private String name;
 
     @ManyToMany(mappedBy = "tagList", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("tagList")
     private List<News> newsList;
 
     public Tag() {

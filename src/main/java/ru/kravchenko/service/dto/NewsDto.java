@@ -1,6 +1,5 @@
 package ru.kravchenko.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.kravchenko.model.Comment;
 import ru.kravchenko.model.Tag;
 
