@@ -33,7 +33,7 @@ public class TagController {
     }
 
     @DeleteMapping
-    public void deleteContact(@RequestParam(name = "id") Long id) {
+    public void deleteTag(@RequestParam(name = "id") Long id) {
         tagService.removeTag(id);
     }
 }

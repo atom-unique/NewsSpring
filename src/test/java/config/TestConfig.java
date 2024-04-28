@@ -1,8 +1,12 @@
 package config;
 
 import org.mapstruct.factory.Mappers;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ru.kravchenko.controller.CommentController;
+import ru.kravchenko.controller.NewsController;
+import ru.kravchenko.controller.TagController;
 import ru.kravchenko.model.Comment;
 import ru.kravchenko.model.News;
 import ru.kravchenko.model.Tag;
@@ -167,5 +171,38 @@ public class TestConfig {
     @Bean
     public TagService tagService() {
         return new TagServiceImpl(tagRepository(), tagMapper());
+    }
+
+    @Bean
+    @Qualifier("tagServiceMock")
+    public TagService tagServiceMock() {
+        return mock(TagService.class);
+    }
+
+    @Bean
+    public TagController tagController() {
+        return new TagController(tagServiceMock());
+    }
+
+    @Bean
+    @Qualifier("newsServiceMock")
+    public NewsService newsServiceMock() {
+        return mock(NewsService.class);
+    }
+
+    @Bean
+    public NewsController newsController() {
+        return new NewsController(newsServiceMock());
+    }
+
+    @Bean
+    @Qualifier("commentServiceMock")
+    public CommentService commentServiceMock() {
+        return mock(CommentService.class);
+    }
+
+    @Bean
+    public CommentController commentController() {
+        return new CommentController(commentServiceMock());
     }
 }
